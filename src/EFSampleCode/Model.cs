@@ -21,7 +21,7 @@ namespace EFSampleCode
         // The following configures EF to create a Sqlite database file in the
         // special "local" folder for your platform.
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+            => options.UseSqlServer("Data Source=(localdb)\\EFSample;Database=EfSampleDb;Integrated Security=true;Pooling=false;Connection Timeout=60"); // options.UseSqlite($"Data Source={DbPath}");
     }
 
     public class Blog
