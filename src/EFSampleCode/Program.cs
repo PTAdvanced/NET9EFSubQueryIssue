@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using EFSampleCode;
+﻿using EFSampleCode;
 
 using var db = new BloggingContext();
 
