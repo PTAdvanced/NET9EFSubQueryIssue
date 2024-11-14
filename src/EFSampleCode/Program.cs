@@ -17,3 +17,16 @@ var exampleQuery = db.Blogs.Join(
     .ToList();
 
 Console.WriteLine($"Number results: {exampleQuery.Count}");
+
+var exampleQuery2 = db.Blogs.Select(b => new
+{
+    b.BlogId,
+    posts = b.Posts.Join(
+        db.Posts.ExcludeDeleted(),
+        outer => outer.PostId,
+        inner => inner.PostId,
+        (outer, inner) => new { outer, inner })
+})
+.ToList();
+
+Console.WriteLine($"Number results: {exampleQuery2.Count}");
